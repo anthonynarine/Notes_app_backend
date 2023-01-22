@@ -19,6 +19,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "notes_db",
+        "HOST": "localhost",
+        "USER": "root",
+        "PASSWORD": "Julia2021!"
+
+    }
+}
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = "django-insecure-suc33kws!2w%mlxw&ht$a_u^4t$-%vlct19s&$ankpj=p538h0"
+
+
 
 
 
