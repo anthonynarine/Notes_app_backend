@@ -14,9 +14,10 @@ from api.models import Note
 
 @api_view( [ "GET", "POST" ])
 
-def notes_list(request):
+def getNotes(request):
     if request.method == "GET":
-        notes = Note.objects.all()
+    #notes are order by most recent
+        notes = Note.objects.all().order_by("-updated")
     
         title = request.GET.get("title", None)
         if title is not None:
@@ -35,6 +36,7 @@ def notes_list(request):
     
     
 @api_view( [ "GET", "PUT", "DELETE"])
+# view will request a note by pk and execute one of the above put or delete request
 def notes_detail(request, pk):    
     notes = get_object_or_404(Note, pk=pk)        
     if request.method == "GET":
@@ -50,6 +52,9 @@ def notes_detail(request, pk):
         notes.delete()
 
         return Response ({'message': "Note was deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+    
+    
+    
 
     
     
